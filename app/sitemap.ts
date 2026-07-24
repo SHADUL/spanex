@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { SITE_URL, allPseoParams } from "@/lib/pseo-data";
 import { posts } from "@/lib/blog-data";
 import { jobs } from "@/lib/careers-data";
+import { softwareTools } from "@/lib/seo/software";
+import { industries } from "@/lib/seo/industries";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -14,6 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/blog",
     "/careers",
+    "/software",
+    "/industries",
   ].map((route) => ({
     url: `${SITE_URL}${route}`,
     lastModified: now,
@@ -42,5 +46,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...pseoRoutes, ...blogRoutes, ...jobRoutes];
+  const softwareRoutes = softwareTools.map((t) => ({
+    url: `${SITE_URL}/software/${t.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  const industryRoutes = industries.map((i) => ({
+    url: `${SITE_URL}/industries/${i.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...pseoRoutes,
+    ...blogRoutes,
+    ...jobRoutes,
+    ...softwareRoutes,
+    ...industryRoutes,
+  ];
 }

@@ -20,16 +20,94 @@ const ORG = {
   name: "SPANEX Engineering",
   url: SITE_URL,
   legalName: "Spanex Engineering Pvt Ltd",
+  logo: `${SITE_URL}/spanex-logo-navy.png`,
+  email: "admin@spanexengineering.com",
   areaServed: ["CA", "US"],
   knowsAbout: [
-    "Utility distribution drafting",
-    "AutoCAD design",
+    "Utility distribution design",
+    "Overhead distribution design",
+    "Underground distribution design",
+    "AutoCAD drafting",
     "SPIDAcalc pole loading analysis",
     "GIS mapping",
     "Landbase preparation",
     "Joint-use pole attachment",
+    "Make-ready engineering",
   ],
 };
+
+/** Global Organization + WebSite graph — emit once in the root layout. */
+export function GlobalJsonLd() {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@graph": [
+          ORG,
+          {
+            "@type": "WebSite",
+            "@id": `${SITE_URL}/#website`,
+            url: SITE_URL,
+            name: "SPANEX Engineering",
+            publisher: { "@id": `${SITE_URL}/#organization` },
+            inLanguage: "en-CA",
+          },
+        ],
+      }}
+    />
+  );
+}
+
+/** Generic Service graph for software / industry / capability pages. */
+export function serviceSchema(opts: {
+  name: string;
+  description: string;
+  path: string;
+  serviceType: string;
+}) {
+  const url = `${SITE_URL}${opts.path}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name: opts.name,
+    description: opts.description,
+    url,
+    serviceType: opts.serviceType,
+    provider: { "@id": `${SITE_URL}/#organization` },
+    areaServed: ["CA", "US"],
+  };
+}
+
+/** ItemList for hub pages (helps discovery + rich results). */
+export function itemListSchema(items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((it, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: it.name,
+      url: `${SITE_URL}${it.path}`,
+    })),
+  };
+}
+
+/** DefinedTerm for glossary/entity pages. */
+export function definedTermSchema(opts: {
+  term: string;
+  definition: string;
+  path: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    name: opts.term,
+    description: opts.definition,
+    url: `${SITE_URL}${opts.path}`,
+    inDefinedTermSet: `${SITE_URL}/glossary`,
+  };
+}
 
 /** ProfessionalService + Service graph for a programmatic landing page. */
 export function professionalServiceSchema(opts: {

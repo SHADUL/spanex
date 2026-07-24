@@ -3,6 +3,7 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { GlobalJsonLd } from "@/components/SchemaJsonLd";
 import { SITE_URL } from "@/lib/pseo-data";
 
 export const metadata: Metadata = {
@@ -49,8 +50,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en-CA">
       <body>
+        <GlobalJsonLd />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-4 focus:z-[60] focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"

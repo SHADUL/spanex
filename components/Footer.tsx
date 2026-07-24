@@ -24,6 +24,12 @@ export default function Footer() {
           <Link href="/capabilities" className="link-wipe hover:text-ink">
             Services
           </Link>
+          <Link href="/industries" className="link-wipe hover:text-ink">
+            Industries
+          </Link>
+          <Link href="/software" className="link-wipe hover:text-ink">
+            Software
+          </Link>
           <Link href="/how-we-work" className="link-wipe hover:text-ink">
             Workflow
           </Link>
