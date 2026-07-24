@@ -48,6 +48,25 @@ export interface ServicePillar {
   intents?: string[];
 }
 
+/** Location (province / state) service page. */
+export interface Region {
+  country: "canada" | "united-states";
+  countryCode: "CA" | "US";
+  slug: string;
+  name: string;
+  type: "province" | "territory" | "state";
+  /** governing standard context, factual */
+  standardBody: string;
+  /** utilities that operate in the region — factual reference, not affiliation */
+  utilities: string[];
+  /** 2–3 sentences of genuine regional market context */
+  marketNote: string;
+  /** time zone label + relation to IST, for the overnight-delivery angle */
+  timezone: string;
+  handoff: string;
+  keywords: string[];
+}
+
 /** Glossary / entity definition page. */
 export interface GlossaryTerm {
   slug: string;

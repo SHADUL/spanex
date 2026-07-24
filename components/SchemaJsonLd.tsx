@@ -79,6 +79,39 @@ export function serviceSchema(opts: {
   };
 }
 
+/**
+ * Service graph for a location page. areaServed is an AdministrativeArea
+ * (province/state) — NOT LocalBusiness, since SPANEX is a remote team with no
+ * physical location in the region.
+ */
+export function locationServiceSchema(opts: {
+  name: string;
+  description: string;
+  path: string;
+  regionName: string;
+  countryCode: "CA" | "US";
+}) {
+  const url = `${SITE_URL}${opts.path}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name: opts.name,
+    description: opts.description,
+    url,
+    serviceType: "Utility distribution design & drafting",
+    provider: { "@id": `${SITE_URL}/#organization` },
+    areaServed: {
+      "@type": "AdministrativeArea",
+      name: opts.regionName,
+      containedInPlace: {
+        "@type": "Country",
+        identifier: opts.countryCode,
+      },
+    },
+  };
+}
+
 /** ItemList for hub pages (helps discovery + rich results). */
 export function itemListSchema(items: { name: string; path: string }[]) {
   return {

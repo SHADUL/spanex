@@ -33,6 +33,9 @@ export default function Footer() {
           <Link href="/glossary" className="link-wipe hover:text-ink">
             Glossary
           </Link>
+          <Link href="/locations" className="link-wipe hover:text-ink">
+            Where we work
+          </Link>
           <Link href="/how-we-work" className="link-wipe hover:text-ink">
             Workflow
           </Link>
