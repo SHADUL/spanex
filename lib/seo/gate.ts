@@ -26,7 +26,7 @@ export const GATE: Record<string, GateThresholds> = {
   industry: { wordFloor: 320, minFaqs: 2, minLinks: 3 },
   service: { wordFloor: 240, minFaqs: 2, minLinks: 4 },
   location: { wordFloor: 380, minFaqs: 3, minLinks: 4 },
-  glossary: { wordFloor: 120, minFaqs: 0, minLinks: 2 },
+  glossary: { wordFloor: 85, minFaqs: 0, minLinks: 2 },
 };
 
 export function wordCount(text: string): number {

@@ -5,6 +5,7 @@ import { jobs } from "@/lib/careers-data";
 import { softwareTools } from "@/lib/seo/software";
 import { industries } from "@/lib/seo/industries";
 import { servicePillars } from "@/lib/seo/services";
+import { glossaryTerms } from "@/lib/seo/glossary";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -19,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/careers",
     "/software",
     "/industries",
+    "/glossary",
   ].map((route) => ({
     url: `${SITE_URL}${route}`,
     lastModified: now,
@@ -68,6 +70,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const glossaryRoutes = glossaryTerms.map((t) => ({
+    url: `${SITE_URL}/glossary/${t.slug}`,
+    lastModified: now,
+    changeFrequency: "yearly" as const,
+    priority: 0.4,
+  }));
+
   return [
     ...staticRoutes,
     ...servicePillarRoutes,
@@ -76,5 +85,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...jobRoutes,
     ...softwareRoutes,
     ...industryRoutes,
+    ...glossaryRoutes,
   ];
 }

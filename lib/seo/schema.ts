@@ -48,6 +48,18 @@ export interface ServicePillar {
   intents?: string[];
 }
 
+/** Glossary / entity definition page. */
+export interface GlossaryTerm {
+  slug: string;
+  term: string;
+  category: "design" | "structural" | "drafting" | "gis" | "standards";
+  short: string; // one-line, extractable answer (for AI/snippets)
+  definition: string; // full definition, 2–4 sentences
+  relatedTermSlugs: string[];
+  relatedServices: { label: string; href: string }[];
+  keywords: string[];
+}
+
 /** Industry vertical page. */
 export interface Industry {
   slug: string;

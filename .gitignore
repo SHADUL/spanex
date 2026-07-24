@@ -30,3 +30,4 @@ next-env.d.ts
 # vercel
 .vercel
 /validate.mjs
+/gcheck.mjs

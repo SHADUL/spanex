@@ -30,6 +30,9 @@ export default function Footer() {
           <Link href="/software" className="link-wipe hover:text-ink">
             Software
           </Link>
+          <Link href="/glossary" className="link-wipe hover:text-ink">
+            Glossary
+          </Link>
           <Link href="/how-we-work" className="link-wipe hover:text-ink">
             Workflow
           </Link>
