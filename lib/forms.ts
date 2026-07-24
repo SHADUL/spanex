@@ -17,7 +17,7 @@ export const CONTACT_EMAIL = "admin@spanexengineering.com";
 
 export const WEB3FORMS_ACCESS_KEY =
   process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
-  "PASTE_YOUR_WEB3FORMS_ACCESS_KEY_HERE";
+  "b4757106-a027-4134-8dd7-ec78f434ad25";
 
 /** True once a real access key has been provided. */
 export function isFormsConfigured(): boolean {
