@@ -55,13 +55,18 @@ export default function Workflow() {
 
         <ol className="col-span-12 lg:col-span-10 lg:col-start-2">
           {workflow.map((step) => (
-            <li key={step.index} className="relative">
+            <li key={step.index} className="relative pl-8 md:pl-0">
+              {/* Mobile node marker, pinned to the rail */}
+              <span
+                aria-hidden
+                className="absolute left-0 top-[2.35rem] h-[7px] w-[7px] -translate-x-[3px] bg-ink md:hidden"
+              />
               <Reveal className="grid grid-cols-12 gap-x-6 py-8">
-                {/* Node marker on the rail */}
+                {/* Node marker on the rail (desktop) */}
                 <div className="col-span-12 flex items-baseline gap-6 md:col-span-4">
                   <span
                     aria-hidden
-                    className="mt-[0.35em] block h-[7px] w-[7px] shrink-0 -translate-x-[calc(0.5px+3.5px)] bg-ink"
+                    className="mt-[0.35em] hidden h-[7px] w-[7px] shrink-0 -translate-x-[calc(0.5px+3.5px)] bg-ink md:block"
                   />
                   <div>
                     <span className="eyebrow text-copper tnum">
