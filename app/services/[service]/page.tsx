@@ -14,6 +14,7 @@ import {
 } from "@/components/SchemaJsonLd";
 import { buildMetadata } from "@/lib/metadata";
 import { servicePillars, getServicePillar } from "@/lib/seo/services";
+import { getGuideForService } from "@/lib/seo/guides";
 import type { ServicePillar } from "@/lib/seo/schema";
 import { getTool } from "@/lib/seo/software";
 import { getIndustry } from "@/lib/seo/industries";
@@ -101,6 +102,7 @@ export default async function ServicePillarPage({
   const related = s.relatedServiceSlugs
     .map(getServicePillar)
     .filter(Boolean) as ServicePillar[];
+  const guide = getGuideForService(s.slug);
 
   return (
     <>
@@ -149,11 +151,20 @@ export default async function ServicePillarPage({
             </p>
           </div>
         </div>
-        <div className="mt-9">
+        <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
           <a href="#quote" className="link-wipe inline-flex items-center gap-2 font-[family-name:var(--font-mono)] text-[0.8rem] uppercase tracking-[0.14em] text-ink">
             Request a quote
             <Arrow className="text-copper" />
           </a>
+          {guide && (
+            <Link
+              href={`/guides/${guide.slug}`}
+              className="link-wipe inline-flex items-center gap-2 font-[family-name:var(--font-mono)] text-[0.8rem] uppercase tracking-[0.14em] text-slate hover:text-ink"
+            >
+              Read the guide
+              <Arrow className="text-copper" />
+            </Link>
+          )}
         </div>
       </section>
 

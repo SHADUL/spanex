@@ -439,3 +439,29 @@ export const guides: Guide[] = [
 export function getGuide(slug: string): Guide | undefined {
   return guides.find((g) => g.slug === slug);
 }
+
+/**
+ * The most relevant in-depth guide for each service pillar, so pillar pages can
+ * link into the authority content (and pass equity back and forth).
+ */
+export const guideForService: Record<string, string> = {
+  "overhead-distribution-design": "nesc-csa-loading-explained",
+  "underground-distribution-design": "gis-to-cad-conversion-guide",
+  "pole-line-design": "nesc-csa-loading-explained",
+  "pole-replacement-design": "make-ready-engineering-guide",
+  "make-ready-design": "make-ready-engineering-guide",
+  "joint-use-pole-loading": "joint-use-pole-attachments-guide",
+  "telecom-attachment-design": "joint-use-pole-attachments-guide",
+  "autocad-drafting": "in-house-vs-outsourced-utility-drafting",
+  "spidacalc-analysis": "spidacalc-pole-loading-guide",
+  "gis-mapping": "gis-to-cad-conversion-guide",
+  "landbase-prep": "gis-to-cad-conversion-guide",
+  "cad-conversion": "gis-to-cad-conversion-guide",
+  "as-built-drafting": "gis-to-cad-conversion-guide",
+  "construction-drawings": "in-house-vs-outsourced-utility-drafting",
+};
+
+export function getGuideForService(serviceSlug: string): Guide | undefined {
+  const slug = guideForService[serviceSlug];
+  return slug ? getGuide(slug) : undefined;
+}
