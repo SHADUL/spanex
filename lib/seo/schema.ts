@@ -48,6 +48,31 @@ export interface ServicePillar {
   intents?: string[];
 }
 
+/** Long-form pillar guide. */
+export interface GuideSection {
+  heading: string;
+  paragraphs: string[];
+  bullets?: string[];
+}
+
+export interface Guide {
+  slug: string;
+  title: string;
+  metaTitle: string;
+  metaDescription: string;
+  dek: string;
+  /** answer-first summary for AI/snippets (speakable) */
+  keyTakeaway: string;
+  datePublished: string;
+  readMinutes: number;
+  category: string;
+  keywords: string[];
+  sections: GuideSection[];
+  faqs: FAQ[];
+  relatedServices: { label: string; href: string }[];
+  relatedTermSlugs: string[];
+}
+
 /** Location (province / state) service page. */
 export interface Region {
   country: "canada" | "united-states";

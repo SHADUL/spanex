@@ -7,6 +7,7 @@ import { industries } from "@/lib/seo/industries";
 import { servicePillars } from "@/lib/seo/services";
 import { glossaryTerms } from "@/lib/seo/glossary";
 import { regions } from "@/lib/seo/locations";
+import { guides } from "@/lib/seo/guides";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -23,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/industries",
     "/glossary",
     "/locations",
+    "/guides",
   ].map((route) => ({
     url: `${SITE_URL}${route}`,
     lastModified: now,
@@ -86,6 +88,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  const guideRoutes = guides.map((g) => ({
+    url: `${SITE_URL}/guides/${g.slug}`,
+    lastModified: new Date(g.datePublished),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   return [
     ...staticRoutes,
     ...servicePillarRoutes,
@@ -96,5 +105,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...industryRoutes,
     ...glossaryRoutes,
     ...locationRoutes,
+    ...guideRoutes,
   ];
 }

@@ -205,6 +205,38 @@ export function techArticleSchema(opts: {
   };
 }
 
+/** TechArticle schema for a long-form guide — carries section + speakable. */
+export function guideArticleSchema(opts: {
+  title: string;
+  description: string;
+  path: string;
+  datePublished: string;
+  keywords: string[];
+  sectionHeadings: string[];
+  wordCount: number;
+}) {
+  const url = `${SITE_URL}${opts.path}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: opts.title,
+    description: opts.description,
+    url,
+    datePublished: opts.datePublished,
+    dateModified: opts.datePublished,
+    keywords: opts.keywords.join(", "),
+    wordCount: opts.wordCount,
+    articleSection: opts.sectionHeadings,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [".guide-takeaway"],
+    },
+    author: { "@type": "Organization", name: "SPANEX Engineering" },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    mainEntityOfPage: url,
+  };
+}
+
 /** JobPosting schema for Google Jobs (no salary disclosed). */
 export function jobPostingSchema(opts: {
   identifier: string;
