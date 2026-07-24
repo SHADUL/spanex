@@ -15,6 +15,14 @@
 
 export const CONTACT_EMAIL = "admin@spanexengineering.com";
 
+/**
+ * Careers applications post here. FormSubmit (https://formsubmit.co) forwards
+ * the submission — including the uploaded resume as an email attachment — to
+ * the address below, free. The FIRST submission triggers a one-time activation
+ * email; confirm it once and all later applications flow through automatically.
+ */
+export const CAREERS_FORMSUBMIT_ENDPOINT = `https://formsubmit.co/${CONTACT_EMAIL}`;
+
 export const WEB3FORMS_ACCESS_KEY =
   process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
   "b4757106-a027-4134-8dd7-ec78f434ad25";

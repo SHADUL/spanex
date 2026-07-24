@@ -159,19 +159,19 @@ export default async function JobPage({
           <div className="border-t border-rule p-7 md:p-10">
             <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
               <p className="measure text-[1rem] leading-relaxed text-slate">
-                Send your CV and a short portfolio or sample drawings to{" "}
+                Apply below with your details and resume, or email us at{" "}
                 <a href={mailto} className="link-wipe text-ink">
                   {CAREERS_EMAIL}
                 </a>
                 .
               </p>
-              <a
-                href={mailto}
+              <Link
+                href={`/careers/${j.id}/apply`}
                 className="group inline-flex shrink-0 items-center justify-center gap-3 bg-ink px-7 py-4 font-[family-name:var(--font-mono)] text-[0.78rem] uppercase tracking-[0.14em] text-paper transition-colors duration-200 hover:bg-copper"
               >
                 Apply now
                 <Arrow />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
