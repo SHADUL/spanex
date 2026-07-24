@@ -38,7 +38,7 @@ export const services: Service[] = [
       "Construction-ready drawing sets",
       "Standards-compliant utility drafting",
     ],
-    href: "/capabilities#distribution-drafting",
+    href: "/services/overhead-distribution-design",
   },
   {
     id: "autocad-design",
@@ -53,7 +53,7 @@ export const services: Service[] = [
       "Construction packages and sheet sets",
       "Layering, blocks and title blocks to your standard",
     ],
-    href: "/capabilities#autocad-design",
+    href: "/services/autocad-drafting",
   },
   {
     id: "gis-landbase",
@@ -68,7 +68,7 @@ export const services: Service[] = [
       "Existing utility asset capture",
       "GIS integration and spatial accuracy",
     ],
-    href: "/capabilities#gis-landbase",
+    href: "/services/gis-mapping",
   },
   {
     id: "spidacalc-engineering",
@@ -83,7 +83,7 @@ export const services: Service[] = [
       "Safety-factor and capacity assessment",
       "Engineering reports per structure",
     ],
-    href: "/capabilities#spidacalc-engineering",
+    href: "/services/spidacalc-analysis",
   },
   {
     id: "telecom-fibre",
@@ -98,7 +98,7 @@ export const services: Service[] = [
       "Joint-use design and coordination",
       "Communication infrastructure drafting",
     ],
-    href: "/capabilities#telecom-fibre",
+    href: "/services/telecom-attachment-design",
   },
 ];
 

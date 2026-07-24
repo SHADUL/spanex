@@ -7,7 +7,7 @@ import { List, X } from "@phosphor-icons/react";
 import { Wordmark } from "./Wordmark";
 
 const links = [
-  { href: "/capabilities", label: "Services" },
+  { href: "/services", label: "Services" },
   { href: "/how-we-work", label: "Workflow" },
   { href: "/blog", label: "Insights" },
   { href: "/quality", label: "Quality" },

@@ -21,7 +21,7 @@ export default function Footer() {
           aria-label="Footer"
           className="flex flex-col gap-3 font-[family-name:var(--font-mono)] text-[0.7rem] uppercase tracking-[0.14em] text-slate"
         >
-          <Link href="/capabilities" className="link-wipe hover:text-ink">
+          <Link href="/services" className="link-wipe hover:text-ink">
             Services
           </Link>
           <Link href="/industries" className="link-wipe hover:text-ink">

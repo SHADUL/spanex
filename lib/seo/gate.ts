@@ -24,7 +24,7 @@ export interface GateThresholds {
 export const GATE: Record<string, GateThresholds> = {
   software: { wordFloor: 260, minFaqs: 2, minLinks: 3 },
   industry: { wordFloor: 320, minFaqs: 2, minLinks: 3 },
-  service: { wordFloor: 500, minFaqs: 3, minLinks: 4 },
+  service: { wordFloor: 240, minFaqs: 2, minLinks: 4 },
   location: { wordFloor: 380, minFaqs: 3, minLinks: 4 },
   glossary: { wordFloor: 120, minFaqs: 0, minLinks: 2 },
 };

@@ -4,13 +4,14 @@ import { posts } from "@/lib/blog-data";
 import { jobs } from "@/lib/careers-data";
 import { softwareTools } from "@/lib/seo/software";
 import { industries } from "@/lib/seo/industries";
+import { servicePillars } from "@/lib/seo/services";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
   const staticRoutes = [
     "",
-    "/capabilities",
+    "/services",
     "/how-we-work",
     "/quality",
     "/contact",
@@ -60,8 +61,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const servicePillarRoutes = servicePillars.map((s) => ({
+    url: `${SITE_URL}/services/${s.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
   return [
     ...staticRoutes,
+    ...servicePillarRoutes,
     ...pseoRoutes,
     ...blogRoutes,
     ...jobRoutes,

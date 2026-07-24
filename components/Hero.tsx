@@ -54,7 +54,7 @@ export default function Hero() {
           <Arrow />
         </Link>
         <Link
-          href="/capabilities"
+          href="/services"
           className="inline-flex items-center justify-center gap-3 border border-ink/20 px-7 py-4 font-[family-name:var(--font-mono)] text-[0.78rem] uppercase tracking-[0.14em] text-ink transition-colors duration-200 hover:border-ink hover:bg-ink hover:text-paper"
         >
           View services

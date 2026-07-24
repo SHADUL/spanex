@@ -74,7 +74,7 @@ export default async function PseoPage({
           faqSchema(page.faqs),
           breadcrumbSchema([
             { name: "Home", path: "/" },
-            { name: "Services", path: "/capabilities" },
+            { name: "Services", path: "/services" },
             { name: page.h1, path },
           ]),
         ]}
@@ -85,7 +85,7 @@ export default async function PseoPage({
         <nav aria-label="Breadcrumb" className="eyebrow mb-8 flex flex-wrap items-center gap-2">
           <Link href="/" className="hover:text-ink">Home</Link>
           <span aria-hidden className="text-rule">/</span>
-          <Link href="/capabilities" className="hover:text-ink">Services</Link>
+          <Link href="/services" className="hover:text-ink">Services</Link>
           <span aria-hidden className="text-rule">/</span>
           <span className="text-copper">{itn.label}</span>
         </nav>

@@ -26,6 +26,28 @@ export interface SoftwareTool {
   keywords: string[];
 }
 
+/** Service pillar page. */
+export interface ServicePillar {
+  slug: string;
+  name: string;
+  category: "design" | "drafting" | "gis" | "analysis" | "support";
+  metaTitle: string;
+  metaDescription: string;
+  tagline: string;
+  problem: string; // the buyer pain, 1–2 sentences
+  approach: string; // how we deliver it, 1–2 sentences
+  scope: string[];
+  deliverables: string[];
+  standards: string[];
+  toolSlugs: string[]; // FK → software
+  industrySlugs: string[]; // FK → industries
+  relatedServiceSlugs: string[];
+  faqs: FAQ[];
+  keywords: string[];
+  /** intent keys available under /services/[slug]/[intent] (pSEO engine). */
+  intents?: string[];
+}
+
 /** Industry vertical page. */
 export interface Industry {
   slug: string;
