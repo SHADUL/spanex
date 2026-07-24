@@ -12,7 +12,7 @@ export function Wordmark({ compact = false }: { compact?: boolean }) {
       aria-label="SPANEX Engineering — home"
       className="inline-flex items-center"
     >
-      <SpanexLogo className={compact ? "h-7" : "h-8 md:h-9"} />
+      <SpanexLogo className={compact ? "h-8" : "h-9 md:h-11"} />
     </Link>
   );
 }
