@@ -1,31 +1,18 @@
 import Link from "next/link";
+import { SpanexLogo } from "./SpanexLogo";
 
 /**
- * SPANEX logo lockup. Uses the brand logo image (navy on light surfaces, white
- * on dark). Intrinsic dimensions are set so there is no layout shift.
+ * SPANEX logo lockup. The logo is inlined (SpanexLogo) so its red dot animates
+ * via page CSS on load. Height is set here; width scales with the aspect ratio.
  */
-export function Wordmark({
-  compact = false,
-  variant = "navy",
-}: {
-  compact?: boolean;
-  variant?: "navy" | "white";
-}) {
-  const src =
-    variant === "white"
-      ? "/spanex-logo-white.svg"
-      : "/spanex-logo-navy.svg";
-
+export function Wordmark({ compact = false }: { compact?: boolean }) {
   return (
-    <Link href="/" aria-label="SPANEX Engineering — home" className="inline-flex">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src}
-        alt="SPANEX Engineering"
-        width={950}
-        height={281}
-        className={`w-auto ${compact ? "h-7" : "h-8 md:h-9"}`}
-      />
+    <Link
+      href="/"
+      aria-label="SPANEX Engineering — home"
+      className="inline-flex items-center"
+    >
+      <SpanexLogo className={compact ? "h-7" : "h-8 md:h-9"} />
     </Link>
   );
 }
