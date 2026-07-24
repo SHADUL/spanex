@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal } from "@/components/Reveal";
-import { Hairline } from "@/components/Hairline";
 import { Arrow } from "@/components/ui/Arrow";
 import { JsonLd, jobPostingSchema } from "@/components/SchemaJsonLd";
+import { ImageBand } from "@/components/ImageBand";
 import { buildMetadata } from "@/lib/metadata";
 import { jobs, careersIntro, CAREERS_EMAIL } from "@/lib/careers-data";
 
@@ -68,9 +68,14 @@ export default function CareersPage() {
         standfirst={careersIntro}
       />
 
-      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
-        <Hairline />
-      </div>
+      <ImageBand
+        src="/images/work-review.jpg"
+        alt="Distribution drawings reviewed at a drafting desk."
+        eyebrow="The work"
+        title="Real projects, reviewed to standard."
+        note="You draft to a client's CAD standard, a lead reviews it, and it ships on a live North American project. Structured work, clear feedback."
+        height="short"
+      />
 
       <section className="mx-auto max-w-[1200px] px-6 py-12 md:px-10 md:py-16">
         <Reveal className="mb-10 flex items-center gap-3">

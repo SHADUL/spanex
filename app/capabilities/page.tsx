@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { Reveal, RevealGroup } from "@/components/Reveal";
 import { Hairline } from "@/components/Hairline";
+import { ImageBand } from "@/components/ImageBand";
 import { services } from "@/lib/content";
 import {
   services as pseoServices,
@@ -83,9 +84,14 @@ export default function ServicesPage() {
         </section>
       ))}
 
-      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
-        <Hairline />
-      </div>
+      <ImageBand
+        src="/images/pole-wood.jpg"
+        alt="A distribution pole with crossarm and insulators carrying overhead conductors."
+        eyebrow="Overhead & underground"
+        title="From the pole down to the drawing set."
+        note="Framing, clearances and attachments — resolved on paper before a crew ever touches the structure."
+        height="short"
+      />
 
       {/* Specialised service pages — internal linking + crawlability */}
       <section className="mx-auto max-w-[1200px] px-6 py-14 md:px-10 md:py-20">
