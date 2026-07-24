@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { List, X } from "@phosphor-icons/react";
 import { Wordmark } from "./Wordmark";
 
 const links = [
@@ -14,16 +16,29 @@ const links = [
 
 export default function Nav() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  // Close the mobile menu whenever the route changes.
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  function isActive(href: string) {
+    return pathname === href || pathname.startsWith(href + "/");
+  }
 
   return (
     <header className="sticky top-0 z-50 bg-paper/85 backdrop-blur-[2px]">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-5 md:px-10">
         <Wordmark />
 
-        <nav aria-label="Primary" className="flex items-center gap-6 md:gap-9">
+        {/* Desktop links */}
+        <nav
+          aria-label="Primary"
+          className="hidden items-center gap-6 md:flex md:gap-9"
+        >
           {links.map((l) => {
-            const active =
-              pathname === l.href || pathname.startsWith(l.href + "/");
+            const active = isActive(l.href);
             return (
               <Link
                 key={l.href}
@@ -38,8 +53,47 @@ export default function Nav() {
             );
           })}
         </nav>
+
+        {/* Mobile toggle */}
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          className="-mr-1 p-1 text-ink md:hidden"
+        >
+          {open ? <X size={24} /> : <List size={24} />}
+        </button>
       </div>
+
       <div className="h-px w-full bg-rule" />
+
+      {/* Mobile menu */}
+      {open && (
+        <nav
+          aria-label="Primary"
+          className="border-b border-rule bg-paper md:hidden"
+        >
+          <ul className="mx-auto max-w-[1200px] px-6 py-2">
+            {links.map((l) => {
+              const active = isActive(l.href);
+              return (
+                <li key={l.href} className="border-b border-rule last:border-b-0">
+                  <Link
+                    href={l.href}
+                    aria-current={active ? "page" : undefined}
+                    className={`block py-4 font-[family-name:var(--font-mono)] text-[0.8rem] uppercase tracking-[0.14em] ${
+                      active ? "text-copper" : "text-ink"
+                    }`}
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      )}
     </header>
   );
 }
