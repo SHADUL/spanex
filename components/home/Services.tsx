@@ -27,12 +27,9 @@ export default function Services() {
           >
             {/* Left: index, icon, title */}
             <div className="col-span-12 md:col-span-4">
-              <div className="flex items-center gap-4">
-                <span className="eyebrow text-copper tnum">{s.index}</span>
-                <span className="text-copper">
-                  <ServiceIcon name={s.icon} />
-                </span>
-              </div>
+              <span className="inline-flex text-copper">
+                <ServiceIcon name={s.icon} />
+              </span>
               <h3 className="mt-4 text-[length:var(--text-h3)] leading-tight text-ink">
                 {s.title}
               </h3>

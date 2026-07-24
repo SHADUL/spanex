@@ -24,9 +24,12 @@ export function Section({
       className={`mx-auto max-w-[1200px] px-6 py-[var(--spacing-section)] md:px-10 ${className}`}
     >
       {eyebrow && (
-        <Reveal className="mb-10 flex items-baseline gap-4">
+        <Reveal className="mb-10 flex items-center gap-3">
           {index && (
-            <span className="eyebrow text-copper tnum">{index}</span>
+            <span
+              aria-hidden
+              className="h-2 w-2 shrink-0 rounded-full bg-copper"
+            />
           )}
           <span className="eyebrow">{eyebrow}</span>
         </Reveal>

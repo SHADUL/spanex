@@ -36,7 +36,7 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#faf9f7",
+          background: "#fafafa",
           padding: "72px 80px",
           fontFamily: "sans-serif",
         }}
@@ -44,10 +44,10 @@ export default function OpengraphImage() {
         <div
           style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 30 }}
         >
-          <span style={{ color: "#0b1f33", fontWeight: 700, letterSpacing: -1 }}>
+          <span style={{ color: "#1c2237", fontWeight: 700, letterSpacing: -1 }}>
             SPANEX
           </span>
-          <span style={{ width: 8, height: 8, background: "#b5732a" }} />
+          <span style={{ width: 8, height: 8, background: "#e92c1a" }} />
           <span
             style={{
               color: "#5a6b7a",
@@ -61,15 +61,15 @@ export default function OpengraphImage() {
         </div>
 
         <svg width="1040" height="360" viewBox="0 0 1200 500" style={{ position: "absolute", left: 80, top: 130, opacity: 0.9 }}>
-          <rect x="114" y="294" width="12" height="12" fill="#0b1f33" />
-          <rect x="1074" y="294" width="12" height="12" fill="#0b1f33" />
-          <path d={ogCatenary()} fill="none" stroke="#b5732a" strokeWidth="3" strokeLinecap="round" />
+          <rect x="114" y="294" width="12" height="12" fill="#1c2237" />
+          <rect x="1074" y="294" width="12" height="12" fill="#1c2237" />
+          <path d={ogCatenary()} fill="none" stroke="#e92c1a" strokeWidth="3" strokeLinecap="round" />
         </svg>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             style={{
-              color: "#0b1f33",
+              color: "#1c2237",
               fontSize: 58,
               fontWeight: 600,
               letterSpacing: -2,

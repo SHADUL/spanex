@@ -7,14 +7,16 @@
    ============================================================ */
 
 @theme {
-  /* --- Colour ------------------------------------------------ */
-  --color-ink: #0b1f33;     /* primary text, dark surfaces      */
-  --color-ink-2: #16324d;   /* secondary dark                   */
-  --color-copper: #b5732a;  /* single accent — used sparingly   */
-  --color-copper-lt: #d4954a;
-  --color-paper: #faf9f7;   /* page background — warm, not white */
-  --color-rule: #ddd8d1;    /* hairlines                        */
-  --color-slate: #5a6b7a;   /* secondary text                   */
+  /* --- Colour — SPANEX brand (from the logo) -----------------
+     Navy #1C2237 + red #E92C1A. The "copper"/"ink" token names are
+     kept so utilities don't churn; only the values changed.        */
+  --color-ink: #1c2237;     /* brand navy — text, dark surfaces  */
+  --color-ink-2: #262e46;   /* secondary navy                    */
+  --color-copper: #e92c1a;  /* brand red — single accent         */
+  --color-copper-lt: #f2604f; /* lighter red for dark surfaces    */
+  --color-paper: #fafafa;   /* page background — clean off-white  */
+  --color-rule: #e4e4e8;    /* hairlines — cool light grey        */
+  --color-slate: #5b6473;   /* secondary text — blue-grey         */
 
   /* --- Type families ----------------------------------------
      Self-hosted variable fonts are wired in public/fonts/README.md.

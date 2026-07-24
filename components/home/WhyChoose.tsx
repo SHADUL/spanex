@@ -23,9 +23,10 @@ export default function WhyChoose() {
               i < reasons.length ? "sm:border-r lg:[&:nth-child(4n)]:border-r-0 sm:[&:nth-child(2n)]:border-r-0" : ""
             }`}
           >
-            <span className="eyebrow text-copper tnum">
-              {String(i + 1).padStart(2, "0")}
-            </span>
+            <span
+              aria-hidden
+              className="block h-2 w-2 rounded-full bg-copper"
+            />
             <h3 className="mt-4 font-[family-name:var(--font-display)] text-[1.15rem] font-semibold leading-tight tracking-[-0.01em] text-ink">
               {r.title}
             </h3>

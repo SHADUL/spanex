@@ -1,29 +1,31 @@
 import Link from "next/link";
 
 /**
- * SPANEX wordmark + descriptor. A single small copper node sits between the
- * word and the descriptor as a conductor reference — the only mark on the site.
+ * SPANEX logo lockup. Uses the brand logo image (navy on light surfaces, white
+ * on dark). Intrinsic dimensions are set so there is no layout shift.
  */
-export function Wordmark({ compact = false }: { compact?: boolean }) {
+export function Wordmark({
+  compact = false,
+  variant = "navy",
+}: {
+  compact?: boolean;
+  variant?: "navy" | "white";
+}) {
+  const src =
+    variant === "white"
+      ? "/spanex-logo-white.png"
+      : "/spanex-logo-navy.png";
+
   return (
-    <Link
-      href="/"
-      aria-label="SPANEX — home"
-      className="group inline-flex items-baseline gap-3"
-    >
-      <span
-        className="font-[family-name:var(--font-display)] font-semibold tracking-[-0.02em] text-ink"
-        style={{ fontSize: compact ? "1.3rem" : "1.5rem" }}
-      >
-        SPANEX
-      </span>
-      <span
-        aria-hidden
-        className="translate-y-[-0.15em] h-[5px] w-[5px] bg-copper"
+    <Link href="/" aria-label="SPANEX Engineering — home" className="inline-flex">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt="SPANEX Engineering"
+        width={950}
+        height={281}
+        className={`w-auto ${compact ? "h-7" : "h-8 md:h-9"}`}
       />
-      {!compact && (
-        <span className="eyebrow hidden sm:inline">Engineering</span>
-      )}
     </Link>
   );
 }
