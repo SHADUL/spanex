@@ -41,7 +41,8 @@ export function TimeZones() {
         </h2>
       </div>
 
-      <div className="mt-12">
+      {/* Desktop: horizontal 24-hour axis */}
+      <div className="mt-12 hidden md:block">
         {/* Axis */}
         <div className="relative h-px w-full bg-rule">
           {ticks.map((t) => (
@@ -91,7 +92,51 @@ export function TimeZones() {
         </div>
       </div>
 
-      <p className="measure mt-12 text-[1.05rem] leading-relaxed text-slate">
+      {/* Mobile: vertical timeline */}
+      <ol className="relative mt-10 space-y-6 border-l border-rule pl-7 md:hidden">
+        <li className="relative">
+          <span
+            aria-hidden
+            className="absolute -left-[calc(1.75rem+3px)] top-1.5 h-[7px] w-[7px] bg-ink"
+          />
+          <div className="font-[family-name:var(--font-display)] text-[1.05rem] font-semibold text-ink">
+            You send
+          </div>
+          <div className="mt-1 font-[family-name:var(--font-mono)] text-[0.72rem] uppercase tracking-[0.12em] text-slate">
+            5:00 PM ET
+          </div>
+        </li>
+
+        <li className="relative">
+          <span
+            aria-hidden
+            className="absolute -left-[calc(1.75rem+3px)] top-1.5 h-[7px] w-[7px] bg-copper"
+          />
+          <div className="border border-copper/40 bg-copper/[0.06] px-4 py-3">
+            <div className="font-[family-name:var(--font-mono)] text-[0.7rem] uppercase tracking-[0.12em] text-copper">
+              SPANEX produces
+            </div>
+            <div className="mt-1 font-[family-name:var(--font-display)] text-[1rem] text-ink">
+              9:00 AM – 6:00 PM IST
+            </div>
+          </div>
+        </li>
+
+        <li className="relative">
+          <span
+            aria-hidden
+            className="absolute -left-[calc(1.75rem+3px)] top-1.5 h-[7px] w-[7px] bg-ink"
+          />
+          <div className="font-[family-name:var(--font-display)] text-[1.05rem] font-semibold text-ink">
+            You receive
+          </div>
+          <div className="mt-1 font-[family-name:var(--font-mono)] text-[0.72rem] uppercase tracking-[0.12em] text-slate">
+            8:30 AM ET
+          </div>
+        </li>
+      </ol>
+
+      <p className="measure mt-10 text-[1.05rem] leading-relaxed text-slate md:mt-12">
         A run you transmit at 5:00 PM Eastern reaches the production team at the
         start of their day. Modelling, drafting, self-check and lead review all
         happen while your office is closed. The package is back in your inbox
