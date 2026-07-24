@@ -4,8 +4,10 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ease, dur } from "@/lib/motion";
 import { Arrow } from "@/components/ui/Arrow";
+import { CONTACT_EMAIL, isFormsConfigured, submitLead } from "@/lib/forms";
 
 type Field = "name" | "email" | "company" | "volume" | "message";
+type Status = "idle" | "sending" | "sent" | "error";
 
 const VOLUMES = [
   "10-pole pilot",
@@ -14,8 +16,6 @@ const VOLUMES = [
   "500+ poles / month",
   "Ongoing landbase / drafting",
 ];
-
-const CONTACT_EMAIL = "admin@spanexengineering.com";
 
 export function ContactForm() {
   const [values, setValues] = useState<Record<Field, string>>({
@@ -27,7 +27,8 @@ export function ContactForm() {
   });
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
   const [touched, setTouched] = useState<Partial<Record<Field, boolean>>>({});
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const sent = status === "sent";
 
   function validate(field: Field, value: string): string | undefined {
     switch (field) {
@@ -62,7 +63,17 @@ export function ContactForm() {
     setErrors((e) => ({ ...e, [field]: validate(field, values[field]) }));
   }
 
-  function onSubmit(e: React.FormEvent) {
+  function mailtoFallback() {
+    const subject = encodeURIComponent(
+      `Production enquiry — ${values.company}`,
+    );
+    const body = encodeURIComponent(
+      `Name: ${values.name}\nCompany: ${values.company}\nEmail: ${values.email}\nVolume: ${values.volume}\n\n${values.message}`,
+    );
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  }
+
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     const nextErrors: Partial<Record<Field, string>> = {};
     (Object.keys(values) as Field[]).forEach((f) => {
@@ -79,14 +90,29 @@ export function ContactForm() {
     });
     if (Object.keys(nextErrors).length > 0) return;
 
-    const subject = encodeURIComponent(
-      `Production enquiry — ${values.company}`,
-    );
-    const body = encodeURIComponent(
-      `Name: ${values.name}\nCompany: ${values.company}\nEmail: ${values.email}\nVolume: ${values.volume}\n\n${values.message}`,
-    );
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-    setSent(true);
+    // Until an access key is set, fall back to the visitor's mail client.
+    if (!isFormsConfigured()) {
+      mailtoFallback();
+      setStatus("sent");
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      const ok = await submitLead({
+        subject: `Production enquiry — ${values.company}`,
+        from_name: values.name,
+        name: values.name,
+        email: values.email,
+        company: values.company,
+        volume: values.volume,
+        message: values.message,
+        botcheck: "",
+      });
+      setStatus(ok ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -100,14 +126,14 @@ export function ContactForm() {
             transition={{ duration: dur.base, ease: ease.out }}
             className="border-l-2 border-copper pl-8"
           >
-            <span className="eyebrow text-copper">Draft ready</span>
+            <span className="eyebrow text-copper">Enquiry received</span>
             <p className="measure mt-5 text-[length:var(--text-h3)] leading-snug text-ink">
-              Your email client should have opened with the enquiry drafted. If
-              it didn&rsquo;t, write to{" "}
+              Thanks &mdash; your enquiry is on its way to our team. We reply the
+              same business day. You can also reach us at{" "}
               <a href={`mailto:${CONTACT_EMAIL}`} className="link-wipe text-ink">
                 {CONTACT_EMAIL}
-              </a>{" "}
-              directly.
+              </a>
+              .
             </p>
           </motion.div>
         ) : (
@@ -115,9 +141,6 @@ export function ContactForm() {
             key="form"
             onSubmit={onSubmit}
             noValidate
-            action={`mailto:${CONTACT_EMAIL}`}
-            method="post"
-            encType="text/plain"
             initial={false}
             className="space-y-8"
           >
@@ -196,13 +219,29 @@ export function ContactForm() {
               />
             </div>
 
-            <button
-              type="submit"
-              className="group inline-flex items-center gap-3 bg-ink px-7 py-4 font-[family-name:var(--font-mono)] text-[0.78rem] uppercase tracking-[0.14em] text-paper transition-colors duration-200 hover:bg-copper"
-            >
-              Send enquiry
-              <Arrow />
-            </button>
+            <div className="flex flex-col gap-4">
+              <button
+                type="submit"
+                disabled={status === "sending"}
+                className="group inline-flex w-fit items-center gap-3 bg-ink px-7 py-4 font-[family-name:var(--font-mono)] text-[0.78rem] uppercase tracking-[0.14em] text-paper transition-colors duration-200 hover:bg-copper disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {status === "sending" ? "Sending…" : "Send enquiry"}
+                <Arrow />
+              </button>
+
+              {status === "error" && (
+                <p
+                  role="alert"
+                  className="measure font-[family-name:var(--font-mono)] text-[0.72rem] uppercase tracking-[0.1em] text-copper"
+                >
+                  Something went wrong sending that. Please email{" "}
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="link-wipe normal-case tracking-normal text-ink">
+                    {CONTACT_EMAIL}
+                  </a>{" "}
+                  and we&rsquo;ll pick it up.
+                </p>
+              )}
+            </div>
           </motion.form>
         )}
       </AnimatePresence>

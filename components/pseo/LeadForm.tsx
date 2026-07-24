@@ -2,40 +2,62 @@
 
 import { useState } from "react";
 import { Arrow } from "@/components/ui/Arrow";
+import { CONTACT_EMAIL, isFormsConfigured, submitLead } from "@/lib/forms";
 
 /**
  * High-intent lead intake for programmatic pages. Carries a hidden `source`
  * (the service/intent slug) into the enquiry so you can see which landing page
- * generated the lead. Composes a mailto — no backend required.
+ * generated the lead. Delivers via Web3Forms (server-side email); falls back to
+ * a mailto draft until an access key is configured.
  */
-const CONTACT_EMAIL = "admin@spanexengineering.com";
-
 export function LeadForm({ source }: { source: string }) {
   const [v, setV] = useState({ name: "", email: "", company: "", message: "" });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (v.name.trim().length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) {
       setError("Please add your name and a valid email.");
       return;
     }
-    const subject = encodeURIComponent(`Enquiry — ${source}`);
-    const body = encodeURIComponent(
-      `Name: ${v.name}\nCompany: ${v.company}\nEmail: ${v.email}\nSource page: ${source}\n\n${v.message}`,
-    );
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-    setSent(true);
+    setError(null);
+
+    if (!isFormsConfigured()) {
+      const subject = encodeURIComponent(`Enquiry — ${source}`);
+      const body = encodeURIComponent(
+        `Name: ${v.name}\nCompany: ${v.company}\nEmail: ${v.email}\nSource page: ${source}\n\n${v.message}`,
+      );
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+      setStatus("sent");
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      const ok = await submitLead({
+        subject: `Enquiry — ${source}`,
+        from_name: v.name,
+        name: v.name,
+        email: v.email,
+        company: v.company,
+        source_page: source,
+        message: v.message,
+        botcheck: "",
+      });
+      setStatus(ok ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
   }
 
-  if (sent) {
+  if (status === "sent") {
     return (
       <div className="border-l-2 border-copper pl-6">
-        <span className="eyebrow text-copper">Draft ready</span>
+        <span className="eyebrow text-copper">Enquiry received</span>
         <p className="measure mt-3 text-[1.05rem] leading-relaxed text-ink">
-          Your email client should have opened with the enquiry drafted. If it
-          didn&rsquo;t, write to{" "}
+          Thanks &mdash; your enquiry is on its way to our team. You can also
+          reach us at{" "}
           <a href={`mailto:${CONTACT_EMAIL}`} className="link-wipe text-ink">
             {CONTACT_EMAIL}
           </a>
@@ -69,17 +91,26 @@ export function LeadForm({ source }: { source: string }) {
         />
       </div>
 
-      {error && (
+      {(error || status === "error") && (
         <p role="alert" className="font-[family-name:var(--font-mono)] text-[0.7rem] uppercase tracking-[0.1em] text-copper">
-          {error}
+          {error ?? (
+            <>
+              Something went wrong. Please email{" "}
+              <a href={`mailto:${CONTACT_EMAIL}`} className="normal-case tracking-normal underline">
+                {CONTACT_EMAIL}
+              </a>
+              .
+            </>
+          )}
         </p>
       )}
 
       <button
         type="submit"
-        className="inline-flex items-center gap-3 bg-ink px-7 py-4 font-[family-name:var(--font-mono)] text-[0.78rem] uppercase tracking-[0.14em] text-paper transition-colors duration-200 hover:bg-copper"
+        disabled={status === "sending"}
+        className="inline-flex items-center gap-3 bg-ink px-7 py-4 font-[family-name:var(--font-mono)] text-[0.78rem] uppercase tracking-[0.14em] text-paper transition-colors duration-200 hover:bg-copper disabled:cursor-not-allowed disabled:opacity-60"
       >
-        Request a quote
+        {status === "sending" ? "Sending…" : "Request a quote"}
         <Arrow />
       </button>
     </form>
