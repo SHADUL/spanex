@@ -15,6 +15,7 @@ const POLE_TOP = 252;
 export default function CadHero() {
   const ink = "var(--color-ink)";
   const copper = "var(--color-copper)";
+  const green = "var(--color-signal)";
   const rule = "var(--color-rule)";
   const slate = "var(--color-slate)";
   const mono = "var(--font-mono)";
@@ -134,21 +135,21 @@ export default function CadHero() {
           {/* Utilization readout */}
           <text className="cad-fade" style={{ opacity: 0, animationDelay: "2.25s", fontFamily: mono, fontSize: "9px", letterSpacing: "0.12em" }} x="836" y="224" fill={slate} stroke="none">POLE UTILISATION</text>
           <rect className="cad-fade" style={{ opacity: 0, animationDelay: "2.3s" }} x="836" y="232" width="116" height="9" stroke={rule} strokeWidth={1} />
-          <rect className="cad-grow" style={{ animationDelay: "2.5s" }} x="836" y="232" width="90" height="9" fill={copper} stroke="none" />
-          <text className="cad-fade" style={{ opacity: 0, animationDelay: "2.8s", fontFamily: mono, fontSize: "10px", letterSpacing: "0.05em" }} x="836" y="262" fill={copper} stroke="none">78% · WITHIN LIMIT</text>
+          <rect className="cad-grow" style={{ animationDelay: "2.5s" }} x="836" y="232" width="90" height="9" fill={green} stroke="none" />
+          <text className="cad-fade" style={{ opacity: 0, animationDelay: "2.8s", fontFamily: mono, fontSize: "10px", letterSpacing: "0.05em" }} x="836" y="262" fill={green} stroke="none">78% · WITHIN LIMIT</text>
 
           {/* PASS pill */}
           <g className="cad-fade" style={{ opacity: 0, animationDelay: "3.05s" }}>
-            <rect x="836" y="312" width="84" height="26" stroke={copper} strokeWidth={1.25} />
-            <path d="M848 325 L854 331 L865 318" stroke={copper} strokeWidth={1.5} />
-            <text x="874" y="329" fill={copper} stroke="none" style={{ fontFamily: mono, fontSize: "11px", letterSpacing: "0.14em" }}>PASS</text>
+            <rect x="836" y="312" width="84" height="26" stroke={green} strokeWidth={1.25} />
+            <path d="M848 325 L854 331 L865 318" stroke={green} strokeWidth={1.5} />
+            <text x="874" y="329" fill={green} stroke="none" style={{ fontFamily: mono, fontSize: "11px", letterSpacing: "0.14em" }}>PASS</text>
           </g>
         </g>
 
         {/* Issued caption */}
         <g className="cad-fade-up" style={{ opacity: 0, animationDelay: "3.3s" }}>
           <line x1="40" y1="424" x2="340" y2="424" stroke={rule} strokeWidth={1} />
-          <path d="M46 444 L52 450 L63 437" stroke={copper} strokeWidth={1.5} />
+          <path d="M46 444 L52 450 L63 437" stroke={green} strokeWidth={1.5} />
           <text x="74" y="448" fill={ink} stroke="none" style={{ fontFamily: mono, fontSize: "11px", letterSpacing: "0.14em" }}>DESIGN APPROVED · ISSUED FOR REVIEW</text>
         </g>
       </svg>

@@ -17,6 +17,7 @@
   --color-paper: #fafafa;   /* page background — clean off-white  */
   --color-rule: #e4e4e8;    /* hairlines — cool light grey        */
   --color-slate: #5b6473;   /* secondary text — blue-grey         */
+  --color-signal: #12833f;  /* pass / within-limit — green        */
 
   /* --- Type families ----------------------------------------
      Self-hosted variable fonts are wired in public/fonts/README.md.

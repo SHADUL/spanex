@@ -43,21 +43,22 @@ export default function Hero() {
       </div>
 
       <div
-        className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 hero-enter"
+        className="mt-10 flex flex-col gap-3 hero-enter sm:flex-row sm:items-center sm:gap-4"
         style={{ animationDelay: "0.46s" }}
       >
         <Link
-          href="/capabilities"
-          className="link-wipe inline-flex items-center gap-2 font-[family-name:var(--font-mono)] text-[0.8rem] uppercase tracking-[0.14em] text-ink"
-        >
-          View services
-          <Arrow className="text-copper" />
-        </Link>
-        <Link
           href="/contact"
-          className="link-wipe inline-flex items-center gap-2 font-[family-name:var(--font-mono)] text-[0.8rem] uppercase tracking-[0.14em] text-slate hover:text-ink"
+          className="group inline-flex items-center justify-center gap-3 bg-ink px-7 py-4 font-[family-name:var(--font-mono)] text-[0.78rem] uppercase tracking-[0.14em] text-paper transition-colors duration-200 hover:bg-copper"
         >
           Request a quote
+          <Arrow />
+        </Link>
+        <Link
+          href="/capabilities"
+          className="inline-flex items-center justify-center gap-3 border border-ink/20 px-7 py-4 font-[family-name:var(--font-mono)] text-[0.78rem] uppercase tracking-[0.14em] text-ink transition-colors duration-200 hover:border-ink hover:bg-ink hover:text-paper"
+        >
+          View services
+          <Arrow />
         </Link>
       </div>
 
