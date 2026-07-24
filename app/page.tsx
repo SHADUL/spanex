@@ -7,6 +7,7 @@ import Standards from "@/components/home/Standards";
 import About from "@/components/home/About";
 import PilotOffer from "@/components/home/PilotOffer";
 import { ImageBand } from "@/components/ImageBand";
+import { HiringStrip } from "@/components/HiringStrip";
 import { SectionRule } from "@/components/Section";
 
 export default function Home() {
@@ -19,6 +20,10 @@ export default function Home() {
       <Workflow />
       <SectionRule />
       <Software />
+      <SectionRule />
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
+        <HiringStrip />
+      </div>
       <SectionRule />
       <WhyChoose />
       <ImageBand

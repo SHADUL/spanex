@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { Wordmark } from "./Wordmark";
+import { HiringStrip } from "./HiringStrip";
 
 export default function Footer() {
   return (
     <footer className="mx-auto max-w-[1200px] px-6 pb-16 pt-24 md:px-10">
+      <HiringStrip className="mb-10" />
       <div className="h-px w-full bg-rule" />
       <div className="mt-10 flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
         <div className="max-w-sm">

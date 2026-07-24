@@ -94,14 +94,17 @@ export function techArticleSchema(opts: {
   };
 }
 
-/** JobPosting schema (no salary disclosed). */
+/** JobPosting schema for Google Jobs (no salary disclosed). */
 export function jobPostingSchema(opts: {
+  identifier: string;
   title: string;
   description: string;
   path: string;
   datePosted: string;
+  validThrough: string;
   employmentType: string;
   city: string;
+  region?: string;
   country: string;
 }) {
   return {
@@ -109,18 +112,26 @@ export function jobPostingSchema(opts: {
     "@type": "JobPosting",
     title: opts.title,
     description: opts.description,
+    identifier: {
+      "@type": "PropertyValue",
+      name: "SPANEX Engineering",
+      value: opts.identifier,
+    },
     datePosted: opts.datePosted,
+    validThrough: opts.validThrough,
     employmentType: opts.employmentType,
     hiringOrganization: {
       "@type": "Organization",
       name: "SPANEX Engineering",
       sameAs: SITE_URL,
+      logo: `${SITE_URL}/spanex-logo-navy.svg`,
     },
     jobLocation: {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
         addressLocality: opts.city,
+        addressRegion: opts.region,
         addressCountry: opts.country,
       },
     },

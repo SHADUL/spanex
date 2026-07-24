@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL, allPseoParams } from "@/lib/pseo-data";
 import { posts } from "@/lib/blog-data";
+import { jobs } from "@/lib/careers-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -34,5 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...pseoRoutes, ...blogRoutes];
+  const jobRoutes = jobs.map((j) => ({
+    url: `${SITE_URL}/careers/${j.id}`,
+    lastModified: new Date(j.datePosted),
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...pseoRoutes, ...blogRoutes, ...jobRoutes];
 }
