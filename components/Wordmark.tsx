@@ -13,8 +13,8 @@ export function Wordmark({
 }) {
   const src =
     variant === "white"
-      ? "/spanex-logo-white.png"
-      : "/spanex-logo-navy.png";
+      ? "/spanex-logo-white.svg"
+      : "/spanex-logo-navy.svg";
 
   return (
     <Link href="/" aria-label="SPANEX Engineering — home" className="inline-flex">
