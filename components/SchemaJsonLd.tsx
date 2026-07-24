@@ -94,6 +94,41 @@ export function techArticleSchema(opts: {
   };
 }
 
+/** JobPosting schema (no salary disclosed). */
+export function jobPostingSchema(opts: {
+  title: string;
+  description: string;
+  path: string;
+  datePosted: string;
+  employmentType: string;
+  city: string;
+  country: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    title: opts.title,
+    description: opts.description,
+    datePosted: opts.datePosted,
+    employmentType: opts.employmentType,
+    hiringOrganization: {
+      "@type": "Organization",
+      name: "SPANEX Engineering",
+      sameAs: SITE_URL,
+    },
+    jobLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: opts.city,
+        addressCountry: opts.country,
+      },
+    },
+    directApply: true,
+    url: `${SITE_URL}${opts.path}`,
+  };
+}
+
 /** BreadcrumbList schema. */
 export function breadcrumbSchema(items: { name: string; path: string }[]) {
   return {

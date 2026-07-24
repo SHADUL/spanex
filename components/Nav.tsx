@@ -11,6 +11,7 @@ const links = [
   { href: "/how-we-work", label: "Workflow" },
   { href: "/blog", label: "Insights" },
   { href: "/quality", label: "Quality" },
+  { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -35,7 +36,7 @@ export default function Nav() {
         {/* Desktop links */}
         <nav
           aria-label="Primary"
-          className="hidden items-center gap-6 md:flex md:gap-9"
+          className="hidden items-center gap-6 lg:flex lg:gap-7"
         >
           {links.map((l) => {
             const active = isActive(l.href);
@@ -60,7 +61,7 @@ export default function Nav() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          className="-mr-1 p-1 text-ink md:hidden"
+          className="-mr-1 p-1 text-ink lg:hidden"
         >
           {open ? <X size={24} /> : <List size={24} />}
         </button>
@@ -72,7 +73,7 @@ export default function Nav() {
       {open && (
         <nav
           aria-label="Primary"
-          className="border-b border-rule bg-paper md:hidden"
+          className="border-b border-rule bg-paper lg:hidden"
         >
           <ul className="mx-auto max-w-[1200px] px-6 py-2">
             {links.map((l) => {

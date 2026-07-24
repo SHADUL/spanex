@@ -20,13 +20,16 @@ export default function Footer() {
           className="flex flex-col gap-3 font-[family-name:var(--font-mono)] text-[0.7rem] uppercase tracking-[0.14em] text-slate"
         >
           <Link href="/capabilities" className="link-wipe hover:text-ink">
-            Capabilities
+            Services
           </Link>
           <Link href="/how-we-work" className="link-wipe hover:text-ink">
-            How we work
+            Workflow
           </Link>
           <Link href="/quality" className="link-wipe hover:text-ink">
             Quality
+          </Link>
+          <Link href="/careers" className="link-wipe hover:text-ink">
+            Careers
           </Link>
         </nav>
 
