@@ -230,6 +230,45 @@ export const services: PseoService[] = [
       "fibre joint-use design",
     ],
   },
+  {
+    key: "telecom-attachment-design",
+    name: "Telecom & Fibre Attachment Design",
+    noun: "telecom and fibre pole attachment design",
+    summary:
+      "Pole attachment and fibre route design for telecom and joint-use networks — attachment layouts, route documentation and make-ready coordination produced to each pole owner's attachment standard.",
+    scope: [
+      "Fibre route and pole attachment design",
+      "Attachment layouts across shared structures",
+      "Joint-use coordination and clearance checks",
+      "Communication CAD drafting and OSP records",
+    ],
+    toolKeys: ["autocad", "arcgis", "landbase"],
+    compliance: [
+      { label: "Attachment standard", value: "Each pole owner's attachment standard" },
+      { label: "Clearances", value: "NESC / CSA communication-space clearances" },
+      { label: "Coordination", value: "Aligned with joint-use loading & make-ready" },
+    ],
+    faqs: [
+      {
+        q: "Do you design to each pole owner's attachment standard?",
+        a: "Yes. Every attachment layout follows the governing distributor's attachment standard and the clearance code for the jurisdiction, so submissions clear review on the first pass.",
+      },
+      {
+        q: "Can you coordinate attachment design with pole loading?",
+        a: "Yes. Attachment design is coordinated with joint-use loading and make-ready, so the route we draft is one the structures actually pass.",
+      },
+      {
+        q: "Do you support outside-plant (OSP) records as well as design?",
+        a: "Yes. We produce route and attachment design and maintain outside-plant documentation, so the design and the records stay in step.",
+      },
+    ],
+    keywords: [
+      "telecom pole attachment design services",
+      "fibre attachment design",
+      "outside plant OSP design",
+      "communication pole attachment drafting",
+    ],
+  },
 ];
 
 /* ------------------------------------------------------------------ */

@@ -216,6 +216,7 @@ export const servicePillars: ServicePillar[] = [
       { q: "Can you support both design and OSP records?", a: "Yes — route/attachment design and outside-plant documentation." },
     ],
     keywords: ["telecom attachment design", "fibre attachment design", "telecom CAD drafting"],
+    intents: ["outsourcing-india", "utility-distributors", "telecom-attachers", "as-built-conversions"],
   },
   {
     slug: "autocad-drafting",
