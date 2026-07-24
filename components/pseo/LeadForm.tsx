@@ -8,7 +8,7 @@ import { Arrow } from "@/components/ui/Arrow";
  * (the service/intent slug) into the enquiry so you can see which landing page
  * generated the lead. Composes a mailto — no backend required.
  */
-const CONTACT_EMAIL = "design@spanex.ca";
+const CONTACT_EMAIL = "admin@spanexengineering.com";
 
 export function LeadForm({ source }: { source: string }) {
   const [v, setV] = useState({ name: "", email: "", company: "", message: "" });

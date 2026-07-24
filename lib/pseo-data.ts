@@ -8,7 +8,7 @@
  */
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://spanex.ca";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://spanexengineering.com";
 
 /* ------------------------------------------------------------------ */
 /* Software / tooling                                                  */

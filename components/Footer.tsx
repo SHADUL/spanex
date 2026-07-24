@@ -37,10 +37,10 @@ export default function Footer() {
 
         <div className="font-[family-name:var(--font-mono)] text-[0.7rem] uppercase tracking-[0.14em] text-slate">
           <a
-            href="mailto:design@spanex.ca"
+            href="mailto:admin@spanexengineering.com"
             className="link-wipe block text-ink"
           >
-            design@spanex.ca
+            admin@spanexengineering.com
           </a>
           <p className="mt-3 normal-case tracking-normal">
             Spanex Engineering Pvt Ltd &middot; Bengaluru, India

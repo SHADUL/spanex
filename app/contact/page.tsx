@@ -52,10 +52,10 @@ export default function ContactPage() {
               <div className="mt-8 border-t border-rule pt-6">
                 <span className="eyebrow block">Direct</span>
                 <a
-                  href="mailto:design@spanex.ca"
+                  href="mailto:admin@spanexengineering.com"
                   className="link-wipe mt-2 block font-[family-name:var(--font-mono)] text-[0.85rem] tracking-[0.06em] text-ink"
                 >
-                  design@spanex.ca
+                  admin@spanexengineering.com
                 </a>
               </div>
             </Reveal>

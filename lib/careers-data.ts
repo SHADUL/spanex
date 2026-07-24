@@ -6,7 +6,7 @@
 export const careersIntro =
   "We are a small, standards-driven team producing distribution design for Canadian utilities and engineering consultancies. If you draft carefully, take standards seriously, and want your work reviewed on real North American projects, we would like to hear from you.";
 
-export const CAREERS_EMAIL = "careers@spanex.ca";
+export const CAREERS_EMAIL = "admin@spanexengineering.com";
 
 export interface Job {
   id: string;

@@ -15,7 +15,7 @@ const VOLUMES = [
   "Ongoing landbase / drafting",
 ];
 
-const CONTACT_EMAIL = "design@spanex.ca";
+const CONTACT_EMAIL = "admin@spanexengineering.com";
 
 export function ContactForm() {
   const [values, setValues] = useState<Record<Field, string>>({

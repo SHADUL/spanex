@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import {
   PenNib,
   GlobeHemisphereWest,
@@ -13,6 +13,7 @@ import {
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { software, type Software as SoftwareItem } from "@/lib/content";
+import { usePrefersReducedMotion } from "@/lib/useReducedMotion";
 
 const ICONS: Record<SoftwareItem["icon"], Icon> = {
   pennib: PenNib,
@@ -29,7 +30,10 @@ const ICONS: Record<SoftwareItem["icon"], Icon> = {
 export default function Software() {
   const scroller = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
+  const [paused, setPaused] = useState(false);
   const drag = useRef({ active: false, startX: 0, startLeft: 0 });
+  const dir = useRef<1 | -1>(1);
+  const reduced = usePrefersReducedMotion();
 
   const onScroll = useCallback(() => {
     const el = scroller.current;
@@ -63,6 +67,23 @@ export default function Software() {
   const endDrag = () => {
     drag.current.active = false;
   };
+
+  // Automatic movement — advances a card at a time, ping-pongs at the ends so
+  // there is no jarring rewind. Pauses on hover/drag and under reduced motion.
+  useEffect(() => {
+    if (reduced) return;
+    const id = window.setInterval(() => {
+      if (paused || drag.current.active) return;
+      const el = scroller.current;
+      if (!el) return;
+      const max = el.scrollWidth - el.clientWidth;
+      if (max <= 0) return;
+      if (el.scrollLeft >= max - 4) dir.current = -1;
+      else if (el.scrollLeft <= 4) dir.current = 1;
+      step(dir.current);
+    }, 3200);
+    return () => window.clearInterval(id);
+  }, [paused, reduced, step]);
 
   const atStart = progress <= 0.01;
   const atEnd = progress >= 0.99;
@@ -105,6 +126,10 @@ export default function Software() {
           onPointerMove={onPointerMove}
           onPointerUp={endDrag}
           onPointerLeave={endDrag}
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocusCapture={() => setPaused(true)}
+          onBlurCapture={() => setPaused(false)}
           className="-mx-6 flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-2 [scrollbar-width:none] md:mx-0 md:cursor-grab md:px-0 md:active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
         >
           {software.map((tool) => {
