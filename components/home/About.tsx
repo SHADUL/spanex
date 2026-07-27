@@ -10,7 +10,7 @@ import { media } from "@/lib/media";
 export default function About() {
   return (
     <Section id="about" index="06" eyebrow="About">
-      <div className="grid grid-cols-12 items-center gap-x-16 gap-y-12">
+      <div className="grid grid-cols-12 items-center gap-x-6 gap-y-12 lg:gap-x-16">
         <Reveal className="col-span-12 lg:col-span-7">
           <div className="border-l-2 border-copper pl-8">
             <p className="measure text-[length:var(--text-h3)] font-medium leading-snug tracking-[-0.01em] text-ink">
