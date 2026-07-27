@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { Media } from "./ui/Media";
+import CadHero from "./home/CadHero";
 import { Arrow } from "./ui/Arrow";
-import { media } from "@/lib/media";
 
 /**
  * Hero — editorial. CSS-driven entrance so the headline paints with the
@@ -12,8 +11,8 @@ import { media } from "@/lib/media";
 export default function Hero() {
   return (
     <section className="mx-auto max-w-[1200px] px-6 pt-16 md:px-10 md:pt-24">
-      <div className="hero-enter flex items-center gap-3" style={{ animationDelay: "0.05s" }}>
-        <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-copper" />
+      <div className="hero-enter flex items-start gap-3" style={{ animationDelay: "0.05s" }}>
+        <span aria-hidden className="mt-[0.45em] h-1.5 w-1.5 shrink-0 rounded-full bg-copper" />
         <span className="eyebrow">Utility Distribution Drafting &amp; Engineering Design</span>
       </div>
 
@@ -62,16 +61,9 @@ export default function Hero() {
         </Link>
       </div>
 
-      {/* Large grounding photograph — priority for LCP, no reveal delay */}
-      <div className="hero-enter mt-14 md:mt-20" style={{ animationDelay: "0.5s" }}>
-        <Media
-          src={media.workReview.src}
-          alt={media.workReview.alt}
-          ratio="16 / 8"
-          priority
-          reveal={false}
-          sizes="(min-width: 1200px) 1120px, 100vw"
-        />
+      {/* The signature hero visual — the CAD/SPIDAcalc drawing animation */}
+      <div className="hero-enter mt-12 md:mt-16" style={{ animationDelay: "0.5s" }}>
+        <CadHero />
       </div>
     </section>
   );
