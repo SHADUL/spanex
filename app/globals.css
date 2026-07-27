@@ -83,6 +83,9 @@
     font-size: 1.0625rem;
     line-height: 1.6;
     font-feature-settings: "kern" 1, "liga" 1;
+    /* Never allow a stray element to make the page scroll sideways.
+       `clip` (not hidden) leaves vertical scroll + sticky nav intact. */
+    overflow-x: clip;
   }
 
   /* Headings use the display family, tight tracking + leading */

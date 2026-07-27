@@ -24,7 +24,7 @@ export function ImageBand({
   return (
     <section
       className={`relative isolate w-full overflow-hidden ${
-        height === "tall" ? "min-h-[62vh] md:min-h-[72vh]" : "min-h-[44vh]"
+        height === "tall" ? "min-h-[50vh] md:min-h-[70vh]" : "min-h-[38vh] md:min-h-[44vh]"
       }`}
     >
       <Image

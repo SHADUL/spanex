@@ -45,13 +45,13 @@ export const lineReveal: Variants = {
   },
 };
 
-/** Editorial image reveal: settles up and de-zooms from 1.03 → 1 (no bounce). */
+/** Editorial image reveal: settles up + fades in (no scale — avoids any
+ *  horizontal overflow on full-width mobile images). */
 export const mediaReveal: Variants = {
-  hidden: { opacity: 0, y: 22, scale: 1.03 },
+  hidden: { opacity: 0, y: 22 },
   show: {
     opacity: 1,
     y: 0,
-    scale: 1,
     transition: { duration: dur.slow, ease: ease.out },
   },
 };

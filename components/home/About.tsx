@@ -32,7 +32,7 @@ export default function About() {
         <Media
           src={media.workCad.src}
           alt={media.workCad.alt}
-          ratio="4 / 5"
+          ratio="16 / 11"
           className="col-span-12 lg:col-span-5"
           sizes="(min-width: 1024px) 40vw, 100vw"
         />
