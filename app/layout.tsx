@@ -1,10 +1,26 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { GlobalJsonLd } from "@/components/SchemaJsonLd";
 import { SITE_URL } from "@/lib/pseo-data";
+
+/* Body — Inter. Labels/figures — IBM Plex Mono. Both self-hosted at build by
+   next/font (no runtime request, no layout shift). Display headings use General
+   Sans + Satoshi, loaded from Fontshare in <head> below. */
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-plex-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -50,7 +66,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-CA">
+    <html lang="en-CA" className={`${inter.variable} ${plexMono.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="" />
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=satoshi@500,700,900&display=swap"
+        />
+      </head>
       <body>
         <GlobalJsonLd />
         <a

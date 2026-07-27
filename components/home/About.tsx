@@ -1,17 +1,19 @@
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
+import { Media } from "@/components/ui/Media";
+import { media } from "@/lib/media";
 
 /**
- * About — a short, precise statement of what SPANEX does, paired with a muted
- * image of drafting work for texture. No marketing, no history padding.
+ * About — a short, precise statement of what SPANEX does, paired with an
+ * optimized image of drafting work for texture. No marketing, no history padding.
  */
 export default function About() {
   return (
     <Section id="about" index="06" eyebrow="About">
-      <div className="grid grid-cols-12 gap-x-6 gap-y-10">
+      <div className="grid grid-cols-12 items-center gap-x-16 gap-y-12">
         <Reveal className="col-span-12 lg:col-span-7">
           <div className="border-l-2 border-copper pl-8">
-            <p className="measure text-[length:var(--text-h3)] leading-snug text-ink">
+            <p className="measure text-[length:var(--text-h3)] font-medium leading-snug tracking-[-0.01em] text-ink">
               Spanex Engineering provides utility distribution drafting and
               engineering design support for electrical, telecom and fibre
               distribution networks.
@@ -27,22 +29,13 @@ export default function About() {
           </div>
         </Reveal>
 
-        <Reveal className="col-span-12 lg:col-span-5">
-          <div className="relative aspect-[4/5] w-full overflow-hidden border border-rule">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/work-cad.jpg"
-              alt="A distribution drawing reviewed on screen at a drafting desk."
-              className="h-full w-full object-cover [filter:grayscale(0.2)_contrast(1.02)]"
-              loading="lazy"
-              decoding="async"
-            />
-            <div
-              aria-hidden
-              className="absolute inset-0 bg-ink/10 mix-blend-multiply"
-            />
-          </div>
-        </Reveal>
+        <Media
+          src={media.workCad.src}
+          alt={media.workCad.alt}
+          ratio="4 / 5"
+          className="col-span-12 lg:col-span-5"
+          sizes="(min-width: 1024px) 40vw, 100vw"
+        />
       </div>
     </Section>
   );

@@ -32,7 +32,7 @@ export default function Workflow() {
   return (
     <Section id="workflow" index="02" eyebrow="How we work">
       <div className="grid grid-cols-12 gap-x-6">
-        <h2 className="col-span-12 mb-9 text-[length:var(--text-h2)] leading-[1.02] tracking-[-0.02em] text-ink lg:col-span-8">
+        <h2 className="col-span-12 mb-14 text-[length:var(--text-h2)] font-semibold leading-[1.02] tracking-[-0.025em] text-ink lg:col-span-8">
           From project request to final drawing package.
         </h2>
       </div>

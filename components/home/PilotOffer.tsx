@@ -41,7 +41,7 @@ export default function PilotOffer() {
           <Reveal className="mt-10">
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-3 border border-copper px-7 py-4 font-[family-name:var(--font-mono)] text-[0.8rem] uppercase tracking-[0.14em] text-paper transition-colors duration-200 hover:bg-copper hover:text-ink"
+              className="group inline-flex items-center gap-3 rounded-[0.7rem] border border-copper px-7 py-4 font-[family-name:var(--font-mono)] text-[0.8rem] uppercase tracking-[0.14em] text-paper transition-colors duration-200 hover:bg-copper hover:text-ink"
             >
               Request a quote
               <Arrow />

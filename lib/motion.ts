@@ -45,6 +45,17 @@ export const lineReveal: Variants = {
   },
 };
 
+/** Editorial image reveal: settles up and de-zooms from 1.03 → 1 (no bounce). */
+export const mediaReveal: Variants = {
+  hidden: { opacity: 0, y: 22, scale: 1.03 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: dur.slow, ease: ease.out },
+  },
+};
+
 /** Hairline that scales in from its left origin. */
 export const hairline: Variants = {
   hidden: { scaleX: 0 },

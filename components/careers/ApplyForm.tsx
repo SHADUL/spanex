@@ -62,7 +62,6 @@ export function ApplyForm({ roleTitle }: { roleTitle: string }) {
       <input type="hidden" name="_subject" value={`New application — ${roleTitle}`} />
       <input type="hidden" name="_next" value={`${SITE_URL}/careers/thank-you`} />
       <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="Position" value={roleTitle} />
       {/* Honeypot — bots fill this; humans never see it */}
       <input
