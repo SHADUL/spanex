@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
 import Services from "@/components/home/Services";
-import Workflow from "@/components/home/Workflow";
+import WorkflowScroll from "@/components/home/WorkflowScroll";
 import Software from "@/components/home/Software";
 import WhyChoose from "@/components/home/WhyChoose";
 import Standards from "@/components/home/Standards";
@@ -16,7 +16,7 @@ export default function Home() {
       <SectionRule />
       <Services />
       <SectionRule />
-      <Workflow />
+      <WorkflowScroll />
       <SectionRule />
       <Software />
       <SectionRule />
