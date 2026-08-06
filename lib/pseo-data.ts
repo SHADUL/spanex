@@ -349,6 +349,188 @@ export const intents: PseoIntent[] = [
 ];
 
 /* ------------------------------------------------------------------ */
+/* Per-service enrichment for the outsourcing-india intent             */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Extra, service-specific content shown only on the outsourcing-india spoke
+ * pages. Keeps the generic (service × intent) matrix intact while giving the
+ * six offshore pages genuine, keyword-targeted depth. Value-framed only — no
+ * rates, never "cheap".
+ */
+export interface SpokeEnrichment {
+  /** short label folded into the section eyebrow, e.g. "AutoCAD drafting" */
+  focus: string;
+  /** narrative paragraphs shown above the comparison table */
+  narrative: string[];
+  /** offshore-specific FAQs appended to the service FAQs */
+  faqs: { q: string; a: string }[];
+  /** extra long-tail keywords merged into page metadata */
+  keywords: string[];
+}
+
+export const outsourcingEnrichment: Record<string, SpokeEnrichment> = {
+  "autocad-drafting": {
+    focus: "AutoCAD drafting",
+    narrative: [
+      "AutoCAD drafting is the highest-volume, most repeatable part of a distribution package, and the first work most teams outsource to India. We produce plan-and-profile sheets, construction drawings, redline updates and full revision-controlled sheet sets in native DWG, using your layers, blocks, xrefs and title block. Nothing is redrawn in a foreign template and converted back.",
+      "The overnight model fits drafting well. You issue scope or mark up redlines at the end of your day; the sheets are produced in Bengaluru and returned the next morning for review. Small packages typically return within 48 hours, and a large sheet run is scheduled and confirmed before work begins, so your local staff check and seal rather than draft.",
+    ],
+    faqs: [
+      {
+        q: "Can we outsource just AutoCAD drafting and keep design in-house?",
+        a: "Yes. Most clients keep design authority and the professional seal in-house and outsource only the drafting hours — plan-and-profile, construction sheets, redlines and revisions — produced to your CAD standard.",
+      },
+      {
+        q: "Do you draft in the current AutoCAD release?",
+        a: "Yes. We draft in current AutoCAD, and in MicroStation where a utility uses DGN, and deliver in the DWG or DGN version your workflow expects, with clean layers and resolved xref paths.",
+      },
+      {
+        q: "How do you keep a large sheet set consistent across drafters?",
+        a: "One CAD standard, shared blocks and a single title-block source, plus a lead check on the full set before release — so numbering, layers and revisions stay consistent regardless of how many drafters are on the run.",
+      },
+    ],
+    keywords: [
+      "outsource autocad drafting to india",
+      "autocad drafting services india",
+      "utility cad drafting outsourcing",
+      "plan and profile drafting outsourcing",
+    ],
+  },
+  "gis-mapping": {
+    focus: "GIS-to-CAD conversion",
+    narrative: [
+      "GIS-to-CAD conversion is the second workflow teams most often move offshore, because it is high-volume and rules-based. We reconcile ArcGIS and QGIS parcel, asset and network layers into coordinate-true DWG aligned to your project datum, with GIS attributes mapped to your CAD layer schema rather than flattened to geometry.",
+      "Because the conversion follows a defined attribute-to-layer mapping, it scales cleanly across a large data set without losing fidelity. We check spatial accuracy against the source before delivery, so the base your designers build on is true to the record, not a redrawn approximation.",
+    ],
+    faqs: [
+      {
+        q: "Which GIS formats can you convert to CAD?",
+        a: "ArcGIS geodatabases and shapefiles, and QGIS layers. We convert to DWG or DGN aligned to your datum, preserving attributes through a mapping to your CAD layer schema.",
+      },
+      {
+        q: "Do attributes survive the GIS-to-CAD conversion?",
+        a: "Yes. We map GIS attributes to your CAD layer and block schema so asset data carries into the drawing instead of being lost when geometry is exported.",
+      },
+      {
+        q: "Can you convert legacy as-built records as well as live GIS?",
+        a: "Yes. We convert legacy GIS and scanned as-built records into coordinate-true, standards-compliant CAD your team can design from.",
+      },
+    ],
+    keywords: [
+      "gis to cad conversion outsourcing",
+      "outsource gis mapping india",
+      "gis to autocad conversion services",
+      "utility gis data conversion outsourcing",
+    ],
+  },
+  "spidacalc-analysis": {
+    focus: "SPIDAcalc pole loading",
+    narrative: [
+      "SPIDAcalc pole loading is analysis work that scales badly with in-house headcount — the queue spikes with a project and empties between them. Outsourcing lets you add loading capacity by the run: attachment and wind cases modelled to NESC Heavy, Medium or Light districts or CSA load cases, using your SPIDAcalc client file and pass/fail thresholds.",
+      "Every failing structure returns with a specific, buildable make-ready — transfer, re-tension, guy or anchor change, or replacement, with framing called out. A lead reviews each result before release, and your licensed professional reviews and seals the analysis.",
+    ],
+    faqs: [
+      {
+        q: "Can you use our SPIDAcalc client file and standards?",
+        a: "Yes. We model against your client file, loading district and pass/fail thresholds, so results match how your own engineers would run the analysis.",
+      },
+      {
+        q: "Do you return make-ready for failing poles?",
+        a: "Yes. Every failing structure carries a specific make-ready — transfer, re-tension, guying, anchor change or replacement — with framing called out, not just a pass/fail flag.",
+      },
+      {
+        q: "How quickly can you turn a large pole run?",
+        a: "Offshore capacity lets us scale a run by the project. Turnaround is scheduled and confirmed up front; smaller batches typically return within 48 hours.",
+      },
+    ],
+    keywords: [
+      "outsource spidacalc pole loading",
+      "pole loading analysis outsourcing india",
+      "nesc pole loading calculation service",
+      "structural pole analysis outsourcing",
+    ],
+  },
+  "landbase-prep": {
+    focus: "landbase preparation",
+    narrative: [
+      "Landbase preparation is foundational and time-consuming — every sheet in a corridor builds on it, but it rarely needs your senior designers. We assemble parcel fabric, survey, GIS exports and existing drawings into one coordinate-true base, with right-of-way, easements and road alignment drafted in.",
+      "Outsourcing the landbase frees your team to design on an accurate footprint from day one. We log any source-data gaps as documented assumptions rather than guessing, so what you receive is traceable back to the record.",
+    ],
+    faqs: [
+      {
+        q: "What source data do you need to build a landbase offshore?",
+        a: "Whatever you have — parcel fabric, survey, GIS exports or existing drawings. We reconcile them into one coordinate-true base and log gaps as documented assumptions.",
+      },
+      {
+        q: "Do you handle ROW and easement alignment?",
+        a: "Yes. Right-of-way, easements and road alignment are drafted into the landbase so corridor design starts from an accurate footprint.",
+      },
+    ],
+    keywords: [
+      "landbase preparation outsourcing",
+      "utility landbase mapping india",
+      "row alignment drafting outsourcing",
+      "distribution corridor landbase services",
+    ],
+  },
+  "joint-use-pole-loading": {
+    focus: "joint-use pole loading",
+    narrative: [
+      "Joint-use pole loading is a specialised, high-volume workflow that suits offshore production: third-party attachment requests modelled for combined power and communication cases, to the governing distributor's attachment standard. We resolve mid-span sag, climbing space and clearances, and return the make-ready that clears each structure.",
+      "Whether you are the pole owner processing attacher requests or an attacher preparing submissions, outsourcing the loading and drafting clears a backlog by the project without adding permanent headcount, with a lead checking every structure before release.",
+    ],
+    faqs: [
+      {
+        q: "Do you process third-party attacher requests?",
+        a: "Yes. We prepare joint-use attachment drafting and pole loading for telecom and fibre attachers, to the governing distributor's attachment standard, with clearances and make-ready resolved.",
+      },
+      {
+        q: "Do you model combined power and communication loading?",
+        a: "Yes. Attachment and wind cases are modelled for the combined power-plus-communication condition against the governing safety factors, not the power span alone.",
+      },
+    ],
+    keywords: [
+      "joint use pole loading outsourcing",
+      "outsource joint use attachment analysis",
+      "nesc joint use calculation service",
+      "third party attachment drafting india",
+    ],
+  },
+  "telecom-attachment-design": {
+    focus: "telecom & fibre attachment design",
+    narrative: [
+      "Telecom and fibre attachment design is production-heavy and standards-driven — a natural fit for an offshore team. We produce attachment layouts across shared structures, fibre route design and outside-plant (OSP) records, to each pole owner's attachment standard and the clearance code for the jurisdiction.",
+      "Attachment design is coordinated with joint-use loading and make-ready, so the route we draft is one the structures actually pass. Outsourcing the design and records keeps your expansion moving without hiring for a temporary surge in build volume.",
+    ],
+    faqs: [
+      {
+        q: "Do you design to each pole owner's attachment standard?",
+        a: "Yes. Every attachment layout follows the governing distributor's attachment standard and the clearance code for the jurisdiction, so submissions clear review on the first pass.",
+      },
+      {
+        q: "Can you maintain OSP records alongside design?",
+        a: "Yes. We produce route and attachment design and maintain outside-plant documentation, so the design and the records stay in step.",
+      },
+    ],
+    keywords: [
+      "telecom attachment design outsourcing",
+      "fibre attachment design india",
+      "osp design outsourcing",
+      "communication pole attachment drafting",
+    ],
+  },
+};
+
+export function getEnrichment(
+  serviceKey: string,
+  intentKey: string,
+): SpokeEnrichment | null {
+  if (intentKey !== "outsourcing-india") return null;
+  return outsourcingEnrichment[serviceKey] ?? null;
+}
+
+/* ------------------------------------------------------------------ */
 /* Composition helpers                                                 */
 /* ------------------------------------------------------------------ */
 
@@ -361,6 +543,7 @@ export interface PseoPage {
   keywords: string[];
   tools: Tool[];
   faqs: { q: string; a: string }[];
+  enrichment: SpokeEnrichment | null;
 }
 
 export function getService(key: string): PseoService | undefined {
@@ -419,6 +602,8 @@ export function buildPseoPage(
   const intent = getIntent(intentKey);
   if (!service || !intent) return null;
 
+  const enrichment = getEnrichment(service.key, intent.key);
+
   const h1 = `${service.name} ${intent.headlineTail}`;
   const intro = `${service.summary} Built for ${intent.audience}: ${intent.angle}`;
 
@@ -428,7 +613,11 @@ export function buildPseoPage(
     slug: `${service.key}/${intent.key}`,
     h1,
     intro,
-    keywords: [...service.keywords, ...intent.keywords],
+    keywords: [
+      ...service.keywords,
+      ...intent.keywords,
+      ...(enrichment?.keywords ?? []),
+    ],
     tools: tools.map((t) => ({
       ...t,
     })),
@@ -438,6 +627,8 @@ export function buildPseoPage(
         q: `Why work with Spanex Engineering for ${service.name.toLowerCase()}?`,
         a: intent.angle,
       },
+      ...(enrichment?.faqs ?? []),
     ],
+    enrichment,
   };
 }

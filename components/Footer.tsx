@@ -24,6 +24,9 @@ export default function Footer() {
           <Link href="/services" className="link-wipe hover:text-ink">
             Services
           </Link>
+          <Link href="/outsourcing" className="link-wipe hover:text-ink">
+            Outsourcing to India
+          </Link>
           <Link href="/industries" className="link-wipe hover:text-ink">
             Industries
           </Link>

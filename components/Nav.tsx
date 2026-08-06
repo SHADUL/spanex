@@ -9,6 +9,7 @@ const EASE = "cubic-bezier(0.65,0,0.35,1)";
 
 const links = [
   { href: "/services", label: "Services" },
+  { href: "/outsourcing", label: "Outsourcing" },
   { href: "/how-we-work", label: "Workflow" },
   { href: "/blog", label: "Insights" },
   { href: "/quality", label: "Quality" },

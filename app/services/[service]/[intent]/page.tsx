@@ -113,6 +113,38 @@ export default async function PseoPage({
 
       <div className="mx-auto max-w-[1200px] px-6 md:px-10"><Hairline /></div>
 
+      {/* Enrichment narrative — only on outsourcing-india spokes */}
+      {page.enrichment && (
+        <>
+          <section className="mx-auto max-w-[1200px] px-6 py-14 md:px-10 md:py-20">
+            <Reveal className="mb-8 flex items-baseline gap-4">
+              <span className="eyebrow text-copper tnum">00</span>
+              <span className="eyebrow">
+                Outsourcing {page.enrichment.focus} to India
+              </span>
+            </Reveal>
+            <div className="grid grid-cols-12 gap-x-6">
+              <div className="col-span-12 space-y-6 lg:col-span-8">
+                {page.enrichment.narrative.map((p, i) => (
+                  <Reveal
+                    as="p"
+                    key={i}
+                    className={`measure leading-relaxed ${
+                      i === 0
+                        ? "text-[length:var(--text-lead)] text-ink"
+                        : "text-[1.05rem] text-slate"
+                    }`}
+                  >
+                    {p}
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </section>
+          <div className="mx-auto max-w-[1200px] px-6 md:px-10"><Hairline /></div>
+        </>
+      )}
+
       {/* Comparison table */}
       <section className="mx-auto max-w-[1200px] px-6 py-14 md:px-10 md:py-20">
         <Reveal className="mb-10 flex items-baseline gap-4">
